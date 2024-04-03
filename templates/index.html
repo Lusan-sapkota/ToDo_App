@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDO</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'style.css')}}">
+</head>
+<body>
+    <div class="navbar">
+        <p id="title">ToDo-App</p>
+        <div class="container">
+            <a href="{{ url_for('signIn') }}"><input type="submit" value="SignIn" id="submit1"> </a>
+            <a href="{{ url_for('signUp') }}"><input type="submit" value="SignUp" id="submit"> </a>
+        </div>
+    </div>
+    
+    <div class="info">
+        <div class="item">
+            <div class="image1"></div>
+            <p>To-Do List</p>
+        </div>
+
+        <div class="item">
+            <div class="image2"></div>
+            <p>signin and signup feature</p>
+        </div>
+
+        <div class="item">
+            <div class="image3"></div>
+            <p>add, delete, edit, mark done, set time</p>
+        </div>
+
+        <div class="item">
+            <div class="image4"></div>
+            <P>all together in same app</P>
+        </div>
+
+        <div class="item">
+            <div class="image5"></div>
+            <P>access from any device</P>
+        </div>
+
+        <div class="item">
+            <div class="image6"></div>
+            <P>service at your fingertips</P>
+        </div>
+
+    </div>
+    
+    <footer>
+        <p>© 2024 Lusan Sapkota. All rights reserved.</p>
+    </footer>
+    
+</body>
+</html>

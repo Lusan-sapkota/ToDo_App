@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDos</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'style2.css')}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function makeEditable(id) {
+            var element = document.getElementById(id);
+            var originalContent = element.innerText; // Store original content
+            element.contentEditable = true;
+            element.focus();
+            element.onblur = function() {
+                var newContent = element.innerText;
+                if (newContent !== originalContent) { // Check if content is changed
+                    $.ajax({
+                        url: '/update_todo/' + id,
+                        type: 'POST',
+                        data: { task: newContent },
+                        success: function(response) {
+                            console.log(response);
+                            var notificationContainer = $('#notification-container');
+                            var notification = $('<div class="notification">Todo updated</div>');
+                            notificationContainer.append(notification);
+
+                            // Remove the notification after a delay
+                            setTimeout(function() {
+                                notification.remove();
+                            }, 3000);
+
+                            location.reload(); // Reload after updating
+                        }
+                    });
+                }
+                else {
+                    element.innerText = originalContent; // Restore original content if not changed
+                }
+            };
+        }
+
+        function deleteTodo(id) {
+            $.ajax({
+                url: '/delete_todo/' + id,
+                type: 'POST',
+                success: function(response) {
+                    var notificationContainer = $('#notification-container');
+                    var notification = $('<div class="notification">Todo deleted</div>');
+                    notificationContainer.append(notification);
+
+                    // Remove the notification after a delay
+                    setTimeout(function() {
+                        notification.remove();
+                    }, 3000);
+
+                    $('#'+id).parent().remove(); // Remove the todo from the DOM
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="navbar">
+        <p id="title">ToDo-App</p>
+        <p id="welcome">Welcome, {{ firstname }}</p>
+        <div class="container">
+            <a href="{{ url_for('logOut') }}"><input type="submit" value="LogOut" id="submit1"> </a>
+        </div>
+    </div>
+    <!-- Notification container -->
+    <div id="notification-container"></div>
+
+    {% if todos %}
+        {% for todo in todos %}
+        <div class="todo-item">
+            <p id="{{ todo.id }}" onclick="makeEditable('{{ todo.id }}')">{{ todo.task }}</p>
+            <button onclick="deleteTodo('{{ todo.id }}')" id="delete">🗑</button>
+            <button onclick="makeEditable('{{ todo.id }}')" id="edit">&#x270E;</button>
+            <p>{{ todo.time }}</p>
+        </div>
+        {% endfor %}
+    {% endif %}
+    <form action="{{ url_for('todos') }}" method="post">
+        <input type="text" name="task" placeholder="New task">
+        <input type="date" name="date">
+        <input type="time" name="time">
+        <input type="submit" value="Add task">
+    </form>
+    
+</body>
+</html>

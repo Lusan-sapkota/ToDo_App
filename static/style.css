@@ -1,0 +1,137 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    width: 100%;
+    height: 60px;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+}
+
+.container a {
+    text-decoration: none;
+}
+
+
+#title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+#submit {
+    background-color: #4CAF50;
+    border-radius: 10px;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+#submit:hover {
+    background-color: #16771a;
+}
+
+#submit1 {
+    background-color: #007BFF;
+    border-radius: 10px;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+
+#submit1:hover {
+    background-color: #1b2d96;
+}
+
+.info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+    margin: 10px;
+    font-size: medium;
+    font-weight: bold;
+    text-transform: capitalize; 
+}
+
+.image1,
+.image2,
+.image3,
+.image4,
+.image5,
+.image6 {
+    width: 350px;
+    height: 350px;
+    border: #333 solid 1px;
+    border-radius: 10px;
+    background-size: cover;
+    margin: 15px;
+}
+
+
+.image1 {
+    background-image: url(image1.png);
+    background-size: cover;
+}
+.image2 {
+    background-image: url(image2.png);
+    background-size: cover;
+}
+
+.image3 {
+    background-image: url(image3.png);
+    background-size: cover;
+}
+
+.image4 {
+    background-image: url(image4.png);
+    background-size: cover;
+}
+
+.image5 {
+    background-image: url(image5.png);
+    background-size: cover;
+}
+
+.image6 {
+    background-image: url(image6.png);
+    background-size: cover;
+}
+
+
+
+footer {
+    position: static;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 5px 0;
+}

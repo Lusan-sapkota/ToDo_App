@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'style1.css')}}">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <p id="title"><a href="{{url_for('home')}}">ToDo-App</a></p>
+        </div>
+    </header>
+    <main>
+        <div class="login_form">
+            <p>SignIn</p>
+            <form action="{{ url_for('signIn') }}" method="post">
+                <label for="email">Your email: </label>
+                <input type="email" id="email" name="email"><br><br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password"><br><br>
+                <!-- <label for="password">2FA Code:</label>
+                <input type="password" id="code"><br><br> -->
+                <!-- <input type="checkbox" id="subscribe" value="subscribe">
+                <label for="subscribe">Remember this device</label><br><br> -->
+                <input type="submit" value="SignIn" id="submit" >
+                <input type="reset" value="Reset" /><br><br>
+                <p>Don't have an account? <a href="{{url_for('signUp')}}">Register</a></p>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 Lusan Sapkota. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
